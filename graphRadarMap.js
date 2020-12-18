@@ -36,7 +36,7 @@ function createRadarMap() {
             graphRadarMap.strokeWeight(2);
             graphRadarMap.stroke(0, 170, 0, 255 - i * 2);
         }
-        graphRadarMap.line(0, 0, 170 * cos(theta - i * 0.02), 170 * sin(theta - i * 0.02));
+        graphRadarMap.line(0, 0, 140 * cos(theta - i * 0.02), 140 * sin(theta - i * 0.02));
     }
     if (theta >= 3.1415 * 2) {
         theta = 0;
@@ -60,5 +60,27 @@ function createRadarMap() {
     graphRadarMap.endShape();
     graphRadarMap.pop();
 
+    
+
+
     image(graphRadarMap, 0, 0);
+}
+
+
+
+class Dust {
+    constructor(_speed) {
+        this.x = random(0,graphRadarMap.width);
+        this.y = random(0,graphRadarMap.height);
+        this.speed = _speed;
+    }
+    show() {
+        graphRadarMap.strokeWeight(2);
+        graphRadarMap.stroke(0,150,0);
+        graphRadarMap.fill(0,150,0);
+        graphRadarMap.ellipse(this.x,this.y,2);
+    }
+    update(){
+        this.x += this.speed;
+    }
 }

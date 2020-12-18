@@ -2,10 +2,8 @@ function changeReverb() {
     let sel = selectReverb.value();
     console.log('start change')
     console.log(sel);
-
-
-    console.log(beepReverbCheck.checked())
-    if (beepReverbCheck.checked()) {
+    console.log(switch2.checked);
+    if (switch2.checked) {
         beepSynth.disconnect(currentReverb);
         currentReverb = reverbList[sel];
         beepSynth.connect(currentReverb);
@@ -14,19 +12,20 @@ function changeReverb() {
     }
 }
 
-function changePulsePan(){
-    pulsePanDirection = random(-0.8,0.8);//map(Math.random(),0,1,-0.8,8);
+function changePulsePan() {
+    pulsePanDirection = random(-0.8, 0.8);//map(Math.random(),0,1,-0.8,8);
     //console.log(pulsePanDirection);
 }
 
-function changePulseFreq(baseFreq = 6000){ 
-    pulseFreq = baseFreq + random(-10,10)
+function changePulseFreq(baseFreq = 6000) {
+    pulseFreq = baseFreq + random(-10, 10)
 }
 
 
 
-function changePlaySpeed() {
-    beepLoop.interval = beepGapDurationSlider.value();
+function changePlaySpeed(speed) {
+    beepLoop.interval = speed;
+    console.log(speed);
 }
 
 
@@ -36,11 +35,13 @@ function beepStart() {
         beepPanner.pan.value = -1;
         beepLoop.start(0);
         console.log("loop start");
-        
+
     } else {
         beepLoop.stop();
     }
 }
+
+
 
 function beepReverb() {
     if (this.checked()) {
@@ -71,7 +72,7 @@ function changeFilterFreq() {
     })
 }
 
-function pulseStart(){
+function pulseStart() {
     if (this.checked()) {
         pulseLoop.start(0);
         console.log("pulse loop start");
@@ -81,24 +82,33 @@ function pulseStart(){
     }
 }
 
+
+
+
 function changeVolume() {
-    if (beepVolumeSlider.value() > -39) {
-        beepSynth.volume.value = beepVolumeSlider.value();
+    if (beepVolumeValue > -39) {
+        beepSynth.volume.value = beepVolumeValue;
     } else {
         beepSynth.volume.value = -60;
     }
 
-    if (noiseVolumeSlider.value() > -39) {
-        noiseSynth.volume.value = noiseVolumeSlider.value();
+    if (noiseVolumeValue > -39) {
+        noiseSynth.volume.value = noiseVolumeValue;
     } else {
         noiseSynth.volume.value = -60;
     }
 
 
-    if (noiseVolumeSlider.value() > -39) {
-        pulseSynth.volume.value = pulseVolumeSlider.value();
+    if (pulseVolumeValue > -39) {
+        pulseSynth.volume.value = pulseVolumeValue;
     } else {
         pulseSynth.volume.value = -60;
+    }
+
+    if (MasterVolumeValue > -45) {
+        Tone.Master.volume.value = MasterVolumeValue;
+    } else {
+        Tone.Master.value = -60;
     }
 }
 

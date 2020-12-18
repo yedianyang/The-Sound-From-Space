@@ -31,19 +31,30 @@ let noiseHighPassFreqSld;
 
 let selectReverb;
 
+let dusts = []
 
+let beepVolumeValue = -12;
+let noiseVolumeValue = -12;
+let pulseVolumeValue = -12;
+let MasterVolumeValue = 0;
 
 //-------Button-------
 function setup() {
-    createUI();
+    
     //----------------canvas
-    let canv = createCanvas(400, 1200);
-    canv.position(300, 0);
-    graphRadarMap = createGraphics(400,400);
-    graphStationMap = createGraphics(400, 100);
-    graphLissajousMap = createGraphics(400,400);
+    let canv = createCanvas(940, 300);
+    canv.position(50, 490);
+    background(0, 0);
+    graphRadarMap = createGraphics(300, 300);
+    graphStationMap = createGraphics(270, 100);
+    graphLissajousMap = createGraphics(300, 300);
 
     initStations();
+    createUI();
+    for (let i = 0; i < 100; i++) {
+        let dt = new Dust(0.5);
+        dusts.push(dt);
+    }
 }
 
 let gripNum = 20;
@@ -53,8 +64,7 @@ let theta = 3.14159265;
 
 
 function draw() {
-    changeFilterFreq();
-
+    //changeFilterFreq();
     changeVolume();
     changePulsePan();
     changePulseFreq(7000);
@@ -62,9 +72,9 @@ function draw() {
     //------------------
     createRadarMap();
     createStationMap();
-   createLissajousMap();
-    for (i in stations){
-        stations[i].show();
+    createLissajousMap();
+    for (i in dusts) {
+        dusts[i].show();
     }
 
 }
@@ -118,10 +128,12 @@ const pulseSynth = new Tone.MonoSynth({
 //Router    
 noiseSynth.chain(lowPassFilter, highPassFilter, Tone.Master);
 
+let beepAttackTimeValue = 0.10;
+let beepFrequenceValue = 2650;
 let beepLoop = new Tone.Loop(function (time) {
     beepPanner.pan.value = beepPanDirection;
     console.log(beepPanner.pan.value);
-    beepSynth.triggerAttackRelease(beepFrequenceSlider.value(), beepAttackTime.value());
+    beepSynth.triggerAttackRelease(beepFrequenceValue, beepAttackTimeValue);
     if (beepPanDirection > 1) {
         beepPanDirection = -1;
     } else {
@@ -147,3 +159,4 @@ noiseSynth.connect(analyzer1);
 
 Tone.Transport.start();
 console.log(Tone.context.state);
+console.log(Tone.Master.volume.value);

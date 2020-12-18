@@ -17,10 +17,123 @@
   <script src="graphRadarMap.js"></script>
   <script src="graphStationMap.js"></script>
   <script src="graphLissajousMap.js"></script>
-
-
+  <script src="libraries/webaudio-controls-master/webaudio-controls.js"></script>
 </head>
+
+<!--
+<div style="background-image:url('Asset/blackBG.jpg');">
+-->
+
 <body>
+  <p id="RTime">REVERB TIME</p>
+  <div class="Beep">
+    <div class="Col01">
+      <p>BEEP ON/OFF</p>
+      <webaudio-switch id="beepOnOffIndcator" width="15" height="15" class="indicator"
+        src="libraries/webaudio-controls-master/knobs/redbutton128.png">
+      </webaudio-switch>
+      <webaudio-switch src="libraries/webaudio-controls-master/img/switch_toggle.png" width="60" height="60" id="sw1"
+        class="switch">
+      </webaudio-switch>
+    </div>
+
+    <div id="Reverb">
+      <p>REVERB ON/OFF</p>
+      <webaudio-switch id="ReverbOnOffIndcator" width="15" height="15" class="indicator"
+        src="libraries/webaudio-controls-master/knobs/redbutton128.png">
+      </webaudio-switch>
+      <webaudio-switch src="libraries/webaudio-controls-master/img/switch_toggle.png" width="60" height="60" id="sw2"
+        class="switch" type="toggle"></webaudio-switch>
+      </div>
+
+    <div class="Col03">
+      <div id="Freq">
+        <p>FREQ</p>
+        <webaudio-knob id="beepFreqKnob" min="1500" max="3000" value="2650" step="50"
+          src="libraries/webaudio-controls-master/knobs/LittlePhatty.png"></webaudio-knob>
+        <webaudio-param link="beepFreqKnob"></webaudio-param>
+      </div>
+      <div id="INTERVAL">
+        <p>INTERVAL</p>
+        <webaudio-knob id="beepIntervalKnob" min="1" max="16" value="6"
+          src="libraries/webaudio-controls-master/knobs/LittlePhatty.png"></webaudio-knob>
+        <webaudio-param link="beepIntervalKnob"></webaudio-param>
+      </div>
+      <div id="ATTACK">
+        <p>ATTACK</p>
+        <webaudio-knob id="beepAttackTimeKnob" min="0.02" max="0.5" value="0.1" step="0.02"
+          src="libraries/webaudio-controls-master/knobs/LittlePhatty.png">
+        </webaudio-knob>
+        <webaudio-param link="beepAttackTimeKnob"></webaudio-param>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="Noise">
+    <div class="Col01">
+      <p>NOISE ON/OFF</p>
+      <webaudio-switch id="NoiseOnOffIndcator" width="15" height="15" class="indicator"
+        src="libraries/webaudio-controls-master/knobs/redbutton128.png">
+      </webaudio-switch>
+      <webaudio-switch src="libraries/webaudio-controls-master/img/switch_toggle.png" width="60" height="60" id="sw3"
+        class="switch" type="toggle"></webaudio-switch>
+    </div>
+
+    <div class="Col02">
+
+      <div id="HP">
+        <p>HIGH PASS</p>
+        <webaudio-knob id="filterHighPass" min="0" max="1200" value="730" step="10"
+          src="libraries/webaudio-controls-master/knobs/LittlePhatty.png">
+        </webaudio-knob>
+        <webaudio-param link="filterHighPass"></webaudio-param>
+      </div>
+      <div id="LP">
+        <p>LOW PASS</p>
+        <webaudio-knob id="filterLowPass" min="1000" max="3000" value="1370" step="10"
+          src="libraries/webaudio-controls-master/knobs/LittlePhatty.png"></webaudio-knob>
+        <webaudio-param link="filterLowPass"></webaudio-param>
+      </div>
+    </div>
+  </div>
+
+  <div class="Signal">
+    <div class="Col01">
+      <p>SIGNAL ON/OFF</p>
+      <div>
+        <webaudio-switch id="PulseOnOffIndcator" width="15" height="15" class="indicator"
+          src="libraries/webaudio-controls-master/knobs/redbutton128.png">
+        </webaudio-switch>
+        <webaudio-switch src="libraries/webaudio-controls-master/img/switch_toggle.png" width="60" height="60" id="sw4"
+          class="switch" type="toggle"></webaudio-switch>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="Mixer">
+    <p>MIXER</p>
+    <webaudio-slider id="fader01" width="24" height="240" min="-60" max="0" value="-12" step="0.5"
+      src="libraries/webaudio-controls-master/knobs/vsliderbody.png"
+      knobsrc="libraries/webaudio-controls-master/knobs/vsliderknob.png">
+    </webaudio-slider>
+
+    <webaudio-slider id="fader02" width="24" height="240" min="-60" max="0" value="-12" step="0.5"
+      src="libraries/webaudio-controls-master/knobs/vsliderbody.png"
+      knobsrc="libraries/webaudio-controls-master/knobs/vsliderknob.png">
+    </webaudio-slider>
+
+    <webaudio-slider id="fader03" width="24" height="240" min="-60" max="0" value="-12" step="0.5"
+      src="libraries/webaudio-controls-master/knobs/vsliderbody.png"
+      knobsrc="libraries/webaudio-controls-master/knobs/vsliderknob.png">
+    </webaudio-slider>
+
+    <webaudio-slider id="MasterFader" width="34" height="240" min="-50" max="12" value="0" step="0.5"
+      src="libraries/webaudio-controls-master/knobs/vsliderbody.png"
+      knobsrc="libraries/webaudio-controls-master/knobs/vsliderknob.png">
+    </webaudio-slider>
+  </div>
   <script src="sketch.js"></script>
 </body>
 

@@ -27,7 +27,7 @@ function createStationMap() {
 
     let stationNum = 4;
     for (let i = 0; i < stationNum + 1; i++) {
-        console.log(stationCount);
+        //console.log(stationCount);
         
         if (i == stationCount) {
             if (stationReverb) {
@@ -49,7 +49,7 @@ function createStationMap() {
 
 
 
-    image(graphStationMap, 0, 420);
+    image(graphStationMap, graphRadarMap.width + graphLissajousMap.width + 40, 300 - graphStationMap.height);
 }
 
 

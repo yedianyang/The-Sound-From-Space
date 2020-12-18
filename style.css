@@ -1,8 +1,115 @@
 html, body {
-  margin: 0;
-  padding: 0;
+  margin: 30px;
+  padding: 0px;
+  /* background-color: #555050; */
+  background-image: url("Asset/BG_01.jpg");
+  background-size: 960px;
+  background-repeat: no-repeat;
+}
+
+@font-face {
+  font-family: Futura;
+  src: url(Asset/futura/futur.ttf);
 }
 
 canvas {
   display: block;
+  z-index: -1;
+}
+
+p {
+  color: whitesmoke;
+  font-family: "Futura"
+}
+
+.Beep {
+  position: absolute;
+  top: 80px;
+  left: 80px;
+}
+
+.Noise {
+  position: absolute;
+  top: 80px;
+  left: 470px;
+}
+
+.Signal {
+  position: absolute;
+  top: 315px;
+  left: 470px;
+}
+
+.Mixer {
+  position: absolute;
+  top: 80px;
+  left: 780px;
+}
+
+.switch {
+  position: relative;
+  top: 10px;
+  left: -15px;
+}
+
+.indicator {
+  position: relative;
+  top: -50px;
+  left: 28px;
+}
+
+#filterHighPass {
+  position: relative;
+  left: 0px;
+}
+
+#LP {
+  position: relative;
+  top: -120px;
+  left: 180px;
+}
+
+#Reverb {
+  position: relative;
+  top: 120px;
+  left: 0px;
+}
+
+#Freq {
+  position: relative;
+  top: -228px;
+  left: 180px;
+}
+
+#INTERVAL {
+  position: relative;
+  top: -230px;
+  left: 0px;
+}
+
+#ATTACK {
+  position: relative;
+  top: -350px;
+  left: 180px;
+}
+
+#fader02 {
+  position: relative;
+  left: 10px;
+}
+
+#fader03 {
+  position: relative;
+  left: 20px;
+}
+
+#MasterFader {
+  position: relative;
+  left: 40px;
+}
+
+#RTime {
+  position: absolute;
+  top: 312px;
+  left: 259px;
 }
